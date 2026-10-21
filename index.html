@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agri-Solar Dome | Smart Farm Dashboard</title>
+<style>
+:root{--bg:#f4f7ef;--panel:#fff;--ink:#18352b;--muted:#6e8075;--green:#237a4b;--soft:#dff3e5;--gold:#f1bf4b;--line:#e3eadf;--red:#c94b42;--shadow:0 12px 32px #1a3e2a14}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer}.app{max-width:1440px;margin:auto;padding:26px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:24px}.brand{display:flex;align-items:center;gap:13px}.logo{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;background:var(--green);color:white;font-size:25px}.brand h1{margin:0;font-size:clamp(20px,2.5vw,29px);letter-spacing:-.7px}.brand p{margin:4px 0 0;color:var(--muted);font-size:13px}.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.demo-pill{display:flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:#fff5d8;color:#815d0b;font-size:12px;font-weight:800;border:1px solid #f1dfaa}.dot{width:8px;height:8px;border-radius:50%;background:#e5a91b}.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:750;transition:.18s}.btn:hover{transform:translateY(-1px);filter:brightness(.97)}.btn-primary{background:var(--green);color:#fff}.btn-light{background:#edf3ea;color:var(--ink);border:1px solid var(--line)}.btn-danger{background:#fff0ee;color:#a72d27;border:1px solid #f4c8c4}.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(290px,.85fr);gap:22px;align-items:start}.welcome{background:linear-gradient(120deg,#173f31,#28784b 72%,#4d9659);color:white;border-radius:24px;padding:27px;position:relative;overflow:hidden;box-shadow:var(--shadow);min-height:200px}.welcome:after{content:"";position:absolute;width:280px;height:280px;border:1px solid #ffffff25;border-radius:50%;right:-42px;top:-75px;box-shadow:0 0 0 26px #ffffff08,0 0 0 55px #ffffff06}.welcome-content{position:relative;z-index:1;max-width:670px}.eyebrow{text-transform:uppercase;font-size:11px;letter-spacing:1.8px;font-weight:850;color:#d4eeae}.welcome h2{font-size:clamp(25px,3vw,37px);letter-spacing:-1px;line-height:1.1;margin:12px 0 10px;max-width:550px}.welcome p{color:#e1f0e4;line-height:1.55;margin:0;max-width:590px;font-size:14px}.welcome-bottom{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.mini-tag{padding:8px 11px;border:1px solid #ffffff35;border-radius:10px;background:#ffffff12;font-size:12px;font-weight:650}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:26px 0 13px}.section-head h3{margin:0;font-size:17px;letter-spacing:-.3px}.section-head span{font-size:12px;color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.metric{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:0 4px 16px #1a3e2a05;min-width:0}.metric-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.metric-icon{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:#e9f4e8;font-size:19px}.metric-label{color:var(--muted);font-size:12px;font-weight:700;margin-top:12px}.metric-value{font-size:clamp(23px,2.5vw,30px);font-weight:850;letter-spacing:-1px;margin-top:3px;white-space:nowrap}.metric-note{font-size:11px;color:var(--muted);margin-top:6px}.meter{height:6px;border-radius:99px;background:#edf1e9;margin-top:12px;overflow:hidden}.meter>div{height:100%;width:50%;background:var(--green);border-radius:99px;transition:width .3s}.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 4px 18px #1a3e2a06}.panel h3{margin:0;font-size:16px}.panel-sub{color:var(--muted);font-size:12px;margin:5px 0 0}.status-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.status-row:last-child{border-bottom:0;padding-bottom:0}.status-left{display:flex;align-items:center;gap:11px;min-width:0}.status-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:#f0f5eb;font-size:18px;flex-shrink:0}.status-title{font-size:13px;font-weight:800}.status-desc{color:var(--muted);font-size:11px;margin-top:3px}.state{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:850;padding:7px 9px;border-radius:999px;background:var(--soft);color:var(--green);white-space:nowrap}.state.on{background:#fff0ee;color:#b53c33}.state.neutral{background:#f0f2ed;color:#647267}.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:17px}.control{border:1px solid var(--line);border-radius:15px;padding:14px;background:#fbfcf8}.control label{display:block;font-size:12px;font-weight:800;margin-bottom:10px}.control input[type=range]{width:100%;accent-color:var(--green)}.control small{color:var(--muted);display:block;margin-top:6px;font-size:11px}.action-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.action-row .btn{flex:1;min-width:120px}.lower-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:18px;margin-top:20px}.chart-wrap{margin-top:18px;height:160px;display:flex;align-items:end;gap:9px;padding:0 2px 25px;border-bottom:1px solid var(--line)}.bar{flex:1;min-width:0;border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#9bd26c,#2c8752);position:relative;transition:height .3s}.bar span{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--muted)}.bar em{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:10px;font-style:normal;color:var(--muted)}.reminder{display:flex;gap:11px;padding:13px 0;border-bottom:1px solid var(--line)}.reminder:last-child{border-bottom:0;padding-bottom:0}.reminder-icon{width:35px;height:35px;display:grid;place-items:center;background:#f4f0dc;border-radius:11px;flex-shrink:0}.reminder strong{display:block;font-size:12px}.reminder p{margin:4px 0 0;color:var(--muted);font-size:11px;line-height:1.45}.solar-card{background:linear-gradient(140deg,#fff8df,#fff);border-color:#f0e5bd}.solar-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.sun-icon{font-size:28px}.solar-number{font-size:28px;font-weight:850;letter-spacing:-1px;margin-top:12px}.solar-note{color:#806c35;font-size:11px;margin-top:3px}.footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:20px 2px 6px;color:var(--muted);font-size:11px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#173f31;color:white;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);font-size:13px;transition:.25s;z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}.alert-banner{display:none;margin-top:14px;padding:12px 14px;background:#fff0ee;border:1px solid #f4c8c4;color:#a72d27;border-radius:13px;font-size:12px;font-weight:800}.alert-banner.show{display:block}@media(max-width:1000px){.layout{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.lower-grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.app{padding:15px}.topbar{align-items:flex-start;flex-direction:column}.metrics{gap:9px}.metric{padding:13px}.lower-grid,.control-grid{grid-template-columns:1fr}.welcome{padding:22px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar"><div class="brand"><div class="logo">🌱</div><div><h1>Agri-Solar Dome</h1><p>Smart agriculture · Connected growing environment</p></div></div><div class="top-actions"><div class="demo-pill" id="mqttBadge"><span class="dot" id="mqttDot"></span><span id="mqttStatus">CONNECTING TO MQTT…</span></div><button class="btn btn-light" id="resetBtn">Reset demo</button></div></header>
+<div class="layout"><main>
+<section class="welcome"><div class="welcome-content"><div class="eyebrow">Precision farming concept</div><h2>A healthier growing environment, managed intelligently.</h2><p>Monitor growing conditions, automate irrigation logic, and surface security alerts from one simple farm dashboard. Live values arrive from your Wokwi ESP32 simulation through a public MQTT broker. No physical farm equipment is connected.</p><div class="welcome-bottom"><span class="mini-tag">☀️ Solar-ready concept</span><span class="mini-tag">💧 Smart irrigation logic</span><span class="mini-tag">🛡️ Dome security concept</span></div></div></section>
+<div class="section-head"><h3>Environmental overview</h3><span id="updatedAt">Waiting for ESP32 telemetry…</span></div>
+<section class="metrics">
+<article class="metric"><div class="metric-top"><div class="metric-icon">💧</div><span class="state" id="moistureState">Optimal</span></div><div class="metric-label">Soil moisture</div><div class="metric-value"><span id="moistureValue">42</span><small style="font-size:15px">%</small></div><div class="meter"><div id="moistureMeter" style="width:42%"></div></div><div class="metric-note" id="moistureNote">Within demo target range</div></article>
+<article class="metric"><div class="metric-top"><div class="metric-icon">🌡️</div><span class="state" id="tempState">Normal</span></div><div class="metric-label">Air temperature</div><div class="metric-value"><span id="tempValue">24.0</span><small style="font-size:15px">°C</small></div><div class="meter"><div id="tempMeter" style="width:40%"></div></div><div class="metric-note">Live DHT22 simulation</div></article>
+<article class="metric"><div class="metric-top"><div class="metric-icon">💨</div><span class="state" id="humidityState">Normal</span></div><div class="metric-label">Relative humidity</div><div class="metric-value"><span id="humidityValue">40</span><small style="font-size:15px">%</small></div><div class="meter"><div id="humidityMeter" style="width:40%"></div></div><div class="metric-note">Live DHT22 simulation</div></article>
+<article class="metric"><div class="metric-top"><div class="metric-icon">☀️</div><span class="state" id="lightState">Moderate</span></div><div class="metric-label">Light sensor</div><div class="metric-value"><span id="lightValue">1001</span></div><div class="meter"><div id="lightMeter" style="width:25%"></div></div><div class="metric-note">ESP32 ADC reading (0–4095)</div></article>
+</section>
+<div class="section-head"><h3>System controls</h3><span>Change inputs to demonstrate responses</span></div>
+<section class="panel"><h3>Growing environment controls</h3><p class="panel-sub">Commands are sent over MQTT to the Wokwi ESP32 simulation. The pump is represented by the GPIO26 LED in this virtual circuit.</p>
+<div class="control-grid">
+<div class="control"><label>Soil moisture input</label><p class="panel-sub">Move the potentiometer in Wokwi to change the simulated soil moisture. Low readings can trigger irrigation in automatic mode.</p></div>
+<div class="control"><label>Security input</label><p class="panel-sub">Trigger the PIR sensor in Wokwi to publish a motion alert to this dashboard.</p></div>
+</div>
+<div class="action-row"><button class="btn btn-primary" id="autoBtn">Automatic irrigation: ON</button><button class="btn btn-light" id="manualBtn">Manual pump: OFF</button></div><p class="panel-sub" id="commandStatus" style="margin-top:12px">Commands have not been sent yet.</p><div class="alert-banner" id="alertBanner">⚠️ MOTION DETECTED · Check dome perimeter.</div></section>
+<div class="lower-grid">
+<section class="panel"><div class="section-head" style="margin:0"><h3>Moisture trend</h3><span>Live session history</span></div><p class="panel-sub">Last five moisture readings received by this browser session. Values appear once the simulation publishes telemetry.</p><div class="chart-wrap" id="chart"><div class="bar" style="height:35%"><em>35%</em><span>08:00</span></div><div class="bar" style="height:43%"><em>43%</em><span>09:00</span></div><div class="bar" style="height:40%"><em>40%</em><span>10:00</span></div><div class="bar" style="height:48%"><em>48%</em><span>11:00</span></div><div class="bar" style="height:42%"><em>42%</em><span>Now</span></div></div></section>
+<section class="panel"><h3>Crop-care reminders</h3><p class="panel-sub">Sample reminders for the concept demo.</p><div class="reminder"><div class="reminder-icon">🌱</div><div><strong>Check root-zone moisture</strong><p>Review the moisture reading before the next irrigation cycle.</p></div></div><div class="reminder"><div class="reminder-icon">🔎</div><div><strong>Inspect plant health</strong><p>Look for wilting, leaf discoloration, or pest symptoms.</p></div></div><div class="reminder"><div class="reminder-icon">🧰</div><div><strong>Review equipment</strong><p>Confirm pump, wiring, and sensor connections during maintenance.</p></div></div></section>
+</div></main>
+<aside>
+<section class="panel"><h3>Dome system status</h3><p class="panel-sub">Live status from Wokwi ESP32</p>
+<div class="status-row"><div class="status-left"><div class="status-icon">💧</div><div><div class="status-title">Irrigation</div><div class="status-desc" id="irrigationDesc">Moisture-based control</div></div></div><span class="state" id="irrigationState">OFF</span></div>
+<div class="status-row"><div class="status-left"><div class="status-icon">🛡️</div><div><div class="status-title">Security</div><div class="status-desc">PIR sensor · Wokwi simulation</div></div></div><span class="state" id="securityState">NORMAL</span></div>
+<div class="status-row"><div class="status-left"><div class="status-icon">🌬️</div><div><div class="status-title">Ventilation</div><div class="status-desc">Future actuator integration</div></div></div><span class="state neutral">PLANNED</span></div>
+<div class="status-row"><div class="status-left"><div class="status-icon">🔋</div><div><div class="status-title">Solar & battery</div><div class="status-desc">Energy monitoring concept</div></div></div><span class="state neutral">PLANNED</span></div></section>
+<section class="panel solar-card" style="margin-top:18px"><div class="solar-head"><div><h3>Solar energy</h3><p class="panel-sub">Future integration concept</p></div><div class="sun-icon">☀️</div></div><div class="solar-number">— <small style="font-size:14px">W</small></div><div class="solar-note">No physical solar input is connected.</div><div class="meter" style="margin-top:15px"><div style="width:0%;background:var(--gold)"></div></div></section>
+<section class="panel" style="margin-top:18px"><h3>Prototype roadmap</h3><p class="panel-sub">Concept-to-prototype plan</p><div class="reminder"><div class="reminder-icon">①</div><div><strong>Virtual circuit</strong><p>ESP32, moisture input, DHT22, light input, PIR and buzzer logic.</p></div></div><div class="reminder"><div class="reminder-icon">②</div><div><strong>Physical proof of concept</strong><p>Connect real sensors, a protected driver stage and a small pump.</p></div></div><div class="reminder"><div class="reminder-icon">③</div><div><strong>Solar + farmer app</strong><p>Add energy storage, connectivity, alerts and crop-care features.</p></div></div></section>
+</aside></div>
+<footer class="footer"><span>Agri-Solar Dome · Ideathon concept dashboard</span><span>Wokwi simulation only · No physical equipment is controlled by this page</span></footer>
+</div><div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+
+// These must match the topic names in the ESP32 sketch.
+const MQTT_URL = "wss://broker.emqx.io:8084/mqtt";
+const TOPIC_BASE = "agri-solar-dome/launchpad-26/a9f42c71";
+const TELEMETRY_TOPIC = TOPIC_BASE + "/telemetry";
+const COMMAND_TOPIC = TOPIC_BASE + "/command";
+
+let mqttClient = null;
+let autoIrrigation = true;
+let manualPump = false;
+let motionActive = false;
+let lastTelemetryAt = null;
+let moistureHistory = [];
+let toastTimer = null;
+let connected = false;
+
+function toast(message) {
+  $("toast").textContent = message;
+  $("toast").classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => $("toast").classList.remove("show"), 2400);
+}
+function stateClass(el, kind = "good") {
+  el.classList.remove("on", "neutral");
+  if (kind === "bad") el.classList.add("on");
+  if (kind === "neutral") el.classList.add("neutral");
+}
+function setMqttStatus(text, isConnected = false, isError = false) {
+  $("mqttStatus").textContent = text;
+  $("mqttDot").style.background = isError ? "#c94b42" : (isConnected ? "#237a4b" : "#e5a91b");
+  $("mqttBadge").style.background = isError ? "#fff0ee" : (isConnected ? "#e7f5e9" : "#fff5d8");
+  $("mqttBadge").style.color = isError ? "#a72d27" : (isConnected ? "#1f6b3f" : "#815d0b");
+}
+function updateStatusFromTelemetry(data) {
+  if (typeof data.moisturePct === "number") {
+    const m = Math.max(0, Math.min(100, data.moisturePct));
+    $("moistureValue").textContent = Math.round(m);
+    $("moistureMeter").style.width = m + "%";
+    $("moistureState").textContent = m < 30 ? "Low" : (m > 75 ? "High" : "Optimal");
+    stateClass($("moistureState"), (m < 30 || m > 75) ? "bad" : "good");
+    $("moistureNote").textContent = m < 30 ? "Dry soil · irrigation may be needed" : (m > 75 ? "High moisture · check for overwatering" : "Within demo target range");
+    moistureHistory.push(m);
+    if (moistureHistory.length > 5) moistureHistory.shift();
+    const bars = $("chart").querySelectorAll(".bar");
+    bars.forEach((bar, i) => {
+      const val = moistureHistory[i];
+      if (typeof val === "number") {
+        bar.style.height = Math.max(5, val) + "%";
+        bar.querySelector("em").textContent = Math.round(val) + "%";
+        bar.querySelector("span").textContent = i === moistureHistory.length - 1 ? "Now" : ("-" + (moistureHistory.length - 1 - i) * 2 + "s");
+        bar.style.opacity = "1";
+      } else {
+        bar.style.height = "5%";
+        bar.querySelector("em").textContent = "—";
+        bar.querySelector("span").textContent = "—";
+        bar.style.opacity = ".35";
+      }
+    });
+  }
+  if (typeof data.temperatureC === "number" && Number.isFinite(data.temperatureC) && data.temperatureC > -50 && data.temperatureC < 100) {
+    const t = data.temperatureC;
+    $("tempValue").textContent = t.toFixed(1);
+    $("tempMeter").style.width = Math.max(0, Math.min(100, (t - 10) / 35 * 100)) + "%";
+    $("tempState").textContent = t >= 35 ? "High" : (t < 16 ? "Cool" : "Normal");
+    stateClass($("tempState"), t >= 35 ? "bad" : (t < 16 ? "neutral" : "good"));
+  }
+  if (typeof data.humidityPct === "number" && Number.isFinite(data.humidityPct) && data.humidityPct >= 0 && data.humidityPct <= 100) {
+    const h = Math.max(0, Math.min(100, data.humidityPct));
+    $("humidityValue").textContent = Math.round(h);
+    $("humidityMeter").style.width = h + "%";
+    $("humidityState").textContent = h >= 80 ? "High" : (h < 25 ? "Low" : "Normal");
+    stateClass($("humidityState"), (h >= 80 || h < 25) ? "bad" : "good");
+  }
+  if (typeof data.lightRaw === "number") {
+    const l = Math.max(0, Math.min(4095, data.lightRaw));
+    $("lightValue").textContent = Math.round(l);
+    $("lightMeter").style.width = (l / 4095 * 100) + "%";
+    $("lightState").textContent = l < 1000 ? "Low" : (l > 3000 ? "High" : "Moderate");
+    stateClass($("lightState"), l > 3000 ? "bad" : (l < 1000 ? "neutral" : "good"));
+  }
+  if (typeof data.pumpOn === "boolean") {
+    $("irrigationState").textContent = data.pumpOn ? "ON" : "OFF";
+    stateClass($("irrigationState"), data.pumpOn ? "bad" : "good");
+    $("irrigationDesc").textContent = data.controlMode === "MANUAL" ? "Manual override active" :
+      (data.autoEnabled ? (data.pumpOn ? "Low moisture · auto watering" : "Moisture-based automatic mode") : "Automatic mode disabled");
+  }
+  if (typeof data.motionDetected === "boolean") {
+    motionActive = data.motionDetected;
+    $("securityState").textContent = motionActive ? "MOTION" : "NORMAL";
+    stateClass($("securityState"), motionActive ? "bad" : "good");
+    $("alertBanner").classList.toggle("show", motionActive);
+  }
+  if (typeof data.autoEnabled === "boolean") autoIrrigation = data.autoEnabled;
+  if (typeof data.controlMode === "string") manualPump = data.controlMode === "MANUAL" && !!data.pumpOn;
+  $("autoBtn").textContent = "Automatic irrigation: " + (autoIrrigation ? "ON" : "OFF");
+  $("autoBtn").className = "btn " + (autoIrrigation ? "btn-primary" : "btn-light");
+  $("manualBtn").textContent = "Manual pump: " + (manualPump ? "ON" : "OFF");
+  $("manualBtn").className = "btn " + (manualPump ? "btn-primary" : "btn-light");
+  lastTelemetryAt = new Date();
+  $("updatedAt").textContent = "Last ESP32 update · " + lastTelemetryAt.toLocaleTimeString();
+}
+function publishCommand(command) {
+  if (!mqttClient || !mqttClient.connected) {
+    $("commandStatus").textContent = "Not connected to MQTT. Wait for the connection, then try again.";
+    toast("Dashboard is not connected to the broker yet.");
+    return;
+  }
+  mqttClient.publish(COMMAND_TOPIC, command, { qos: 0, retain: false });
+  $("commandStatus").textContent = "Sent command: " + command + " · waiting for ESP32 confirmation…";
+}
+function connectMqtt() {
+  if (typeof mqtt === "undefined") {
+    setMqttStatus("MQTT LIBRARY FAILED", false, true);
+    $("commandStatus").textContent = "Could not load MQTT.js. Check internet access or the CDN URL.";
+    return;
+  }
+  const clientId = "agri-dashboard-" + Math.random().toString(16).slice(2, 10);
+  mqttClient = mqtt.connect(MQTT_URL, {
+    clientId,
+    clean: true,
+    connectTimeout: 10000,
+    reconnectPeriod: 3000,
+    keepalive: 30
+  });
+  mqttClient.on("connect", () => {
+    connected = true;
+    setMqttStatus("MQTT CONNECTED", true);
+    mqttClient.subscribe(TELEMETRY_TOPIC, { qos: 0 }, err => {
+      if (err) setMqttStatus("SUBSCRIBE FAILED", false, true);
+      else $("commandStatus").textContent = "Connected. Waiting for live Wokwi sensor readings…";
+    });
+  });
+  mqttClient.on("reconnect", () => setMqttStatus("RECONNECTING…"));
+  mqttClient.on("offline", () => { connected = false; setMqttStatus("MQTT OFFLINE", false, true); });
+  mqttClient.on("error", err => {
+    setMqttStatus("MQTT CONNECTION ERROR", false, true);
+    console.warn("MQTT error:", err.message);
+  });
+  mqttClient.on("message", (topic, payload) => {
+    if (topic !== TELEMETRY_TOPIC) return;
+    try {
+      const data = JSON.parse(payload.toString());
+      updateStatusFromTelemetry(data);
+      $("commandStatus").textContent = "Live data received from Wokwi ESP32.";
+    } catch (e) {
+      console.warn("Invalid telemetry JSON:", e);
+    }
+  });
+}
+$("autoBtn").addEventListener("click", () => {
+  const next = !autoIrrigation;
+  publishCommand(next ? "AUTO_ON" : "AUTO_OFF");
+});
+$("manualBtn").addEventListener("click", () => {
+  const next = !manualPump;
+  publishCommand(next ? "MANUAL_ON" : "MANUAL_OFF");
+});
+$("resetBtn").addEventListener("click", () => {
+  publishCommand("RESET_AUTO");
+  toast("Requested automatic mode from ESP32.");
+});
+connectMqtt();
+</script></body></html>
